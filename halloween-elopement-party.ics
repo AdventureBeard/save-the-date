@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Braden & Sarah//Halloween Elopement Party//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:20250712T144332Z-kpjzq1q2m0e@halloween-elopement
+DTSTAMP:20250712T144332Z
+DTSTART;VALUE=DATE:20251018
+SUMMARY:Braden and Sarah's Halloween Elopement Party
+LOCATION:DFW, TX
+DESCRIPTION:We have decided to elope! We are throwing a Halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d'oeuvres!
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR

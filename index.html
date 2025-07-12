@@ -117,57 +117,15 @@
         }
 
         function addToAppleCalendar() {
-            const event = {
-                title: `Braden and Sarah's Halloween Elopement Party`,
-                date: '20251018',                  // YYYYMMDD
-                location: 'DFW, TX',
-                description: `We have decided to elope! We are throwing a Halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d'oeuvres!`
-            };
+            const httpsUrl = `${window.location.host}/halloween-elopement-party.ics`
+            const webcalUrl = `webcal://${window.location.host}/halloween-elopement-party.ics`
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const url = isIOS ? webcalUrl : httpsUrl;
 
-            // timestamp for DTSTAMP (UTC)
-            const now = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-            // unique ID for the event
-            const uid = now + '-' + Math.random().toString(36).substr(2) + '@halloween-elopement';
-
-            const icsLines = [
-                'BEGIN:VCALENDAR',
-                'VERSION:2.0',
-                'PRODID:-//Braden & Sarah//Halloween Elopement Party//EN',
-                'CALSCALE:GREGORIAN',
-                'METHOD:PUBLISH',
-                'BEGIN:VEVENT',
-                `UID:${uid}`,
-                `DTSTAMP:${now}`,
-                `DTSTART;VALUE=DATE:${event.date}`,
-                `SUMMARY:${event.title}`,
-                `LOCATION:${event.location}`,
-                `DESCRIPTION:${event.description}`,
-                'STATUS:CONFIRMED',
-                'SEQUENCE:0',
-                'END:VEVENT',
-                'END:VCALENDAR'
-            ];
-            const blob = new Blob([icsLines.join('\r\n')], { type: 'text/calendar' });
-
-            if (/(iPad|iPhone|iPod)/i.test(navigator.userAgent)) {
-                // iOS: read as data URI so Safari will open in Calendar
-                const reader = new FileReader();
-                reader.onload = e => {
-                    window.location.href = e.target.result;
-                };
-                reader.readAsDataURL(blob);
-            } else {
-                // desktop: download as before
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'halloween-elopement-party.ics';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }
+            // open in a new tab/window
+            window.open(url, '_blank', 'noopener');
         }
+
 
 
         // Spooky mouse trail effect
