@@ -117,39 +117,47 @@
         }
 
         function addToAppleCalendar() {
-            const eventDetails = {
-                title: `Sarah and Bradens's Halloween Elopement Party`,
-                date: '20251018',
+            const event = {
+                title: `Braden and Sarah's Halloween Elopement Party`,
+                date: '20251018',                  // YYYYMMDD
                 location: 'DFW, TX',
-                description: `We have decided to elope! We are throwing a halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d'oeuvres!`
+                description: `We have decided to elope! We are throwing a Halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d'oeuvres!`
             };
 
-            const ics = [
+            // timestamp for DTSTAMP (UTC)
+            const now = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            // unique ID for the event
+            const uid = now + '-' + Math.random().toString(36).substr(2) + '@halloween-elopement';
+
+            const icsLines = [
                 'BEGIN:VCALENDAR',
                 'VERSION:2.0',
                 'PRODID:-//Braden & Sarah//Halloween Elopement Party//EN',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
                 'BEGIN:VEVENT',
-                `DTSTART;VALUE=DATE:${eventDetails.date}`,
-                `SUMMARY:${eventDetails.title}`,
-                `LOCATION:${eventDetails.location}`,
-                `DESCRIPTION:${eventDetails.description}`,
+                `UID:${uid}`,
+                `DTSTAMP:${now}`,
+                `DTSTART;VALUE=DATE:${event.date}`,
+                `SUMMARY:${event.title}`,
+                `LOCATION:${event.location}`,
+                `DESCRIPTION:${event.description}`,
                 'STATUS:CONFIRMED',
                 'SEQUENCE:0',
                 'END:VEVENT',
                 'END:VCALENDAR'
-            ].join('\r\n');
+            ];
+            const blob = new Blob([icsLines.join('\r\n')], { type: 'text/calendar' });
 
-            // iOS workaround: turn blob into data: URI so Safari will open it
-            const blob = new Blob([ics], { type: 'text/calendar' });
             if (/(iPad|iPhone|iPod)/i.test(navigator.userAgent)) {
+                // iOS: read as data URI so Safari will open in Calendar
                 const reader = new FileReader();
                 reader.onload = e => {
-                    // this URL will be handed off to Calendar.app
                     window.location.href = e.target.result;
                 };
                 reader.readAsDataURL(blob);
             } else {
-                // desktop: use download attribute as before
+                // desktop: download as before
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
