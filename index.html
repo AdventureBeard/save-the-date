@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date: Braden and Sarah's Halloween Elopement Party</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">Halloween_Elopement_Party.exe</div>
+                <div class="title-bar-controls">
+                    <button class="minimize">_</button>
+                    <button class="maximize">□</button>
+                    <button class="close">✕</button>
+                </div>
+            </div>
+
+            <div class="window-body">
+                <div class="header">
+                    <div class="skull-border">
+                        <h1>💀 SAVE THE DATE 💀</h1>
+                        <h2>Braden and Sarah's Halloween Elopement Party</h2>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="announcement-box">
+                        <div class="box-header">🎃 EXCITING NEWS! 🎃</div>
+                        <div class="box-content">
+                            <p><strong>We have decided to elope!</strong></p>
+                            <p>Save the date! We are throwing a halloween party to celebrate our upcoming elopement with
+                                friends!</p>
+
+                            <div class="details">
+                                <div class="detail-item">
+                                    <span class="label">📅 DATE:</span>
+                                    <span class="value">October 18th</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">📍 LOCATION:</span>
+                                    <span class="value">DFW, TX</span>
+                                </div>
+                            </div>
+
+                            <p>Look forward to costumes, games, and heavy hors d'oeuvres!</p>
+                            <p><em>More details to come.</em></p>
+
+                            <div class="calendar-buttons">
+                                <div class="button-label">📅 Add to Calendar:</div>
+                                <button class="calendar-btn google-cal" onclick="addToGoogleCalendar()">
+                                    📊 Google Calendar
+                                </button>
+                                <button class="calendar-btn apple-cal" onclick="addToAppleCalendar()">
+                                    🍎 Apple Calendar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="features-box">
+                        <div class="box-header">🦇 WHAT TO EXPECT 🦇</div>
+                        <div class="box-content">
+                            <ul>
+                                <li>👻 Costumes encouraged!</li>
+                                <li>🎮 Halloween games & activities</li>
+                                <li>🍽️ Heavy hors d'oeuvres</li>
+                                <li>🎉 Celebration of our love!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="status-bar">
+                        <span>Ready</span>
+                        <span class="spacer"></span>
+                        <span>♥ S & B ♥</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-skull">💀</div>
+        <div class="floating-ghost">👻</div>
+        <div class="floating-pumpkin">🎃</div>
+    </div>
+
+    <script>
+        function addToGoogleCalendar() {
+            const eventDetails = {
+                title: 'Braden and Sarah\'s Halloween Elopement Party',
+                date: '20241018',
+                location: 'DFW, TX',
+                description: 'We have decided to elope! We are throwing a halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d\'oeuvres!'
+            };
+
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${eventDetails.date}/${eventDetails.date}&location=${encodeURIComponent(eventDetails.location)}&details=${encodeURIComponent(eventDetails.description)}`;
+            window.open(googleUrl, '_blank');
+        }
+
+        function addToAppleCalendar() {
+            const eventDetails = {
+                title: 'Braden and Sarah\'s Halloween Elopement Party',
+                date: '20241018',
+                location: 'DFW, TX',
+                description: 'We have decided to elope! We are throwing a halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d\'oeuvres!'
+            };
+
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Braden & Sarah//Halloween Elopement Party//EN
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:${eventDetails.date}
+SUMMARY:${eventDetails.title}
+LOCATION:${eventDetails.location}
+DESCRIPTION:${eventDetails.description}
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR`;
+
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'halloween-elopement-party.ics';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        // Spooky mouse trail effect
+        const trailElements = ['👻', '🎃', '💀', '✨', '🕷️', '⚡', '🪦', '🐈‍⬛', '💜', '🐸'];
+        let trailIndex = 0;
+
+        let timeout = null;
+
+        let throttle = function (callback, delay) {
+            return function () {
+                if (timeout) return;
+                timeout = setTimeout(() => {
+                    callback.apply(this, arguments);
+                    timeout = null;
+                }, delay);
+            };
+        };
+
+
+        document.addEventListener('mousemove', throttle(function (e) {
+
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.textContent = trailElements[trailIndex];
+            // random jitter
+            trail.style.left = (e.clientX - 8 + (Math.random() * 16 - 8)) + 'px';
+            trail.style.top = (e.clientY - 8 + (Math.random() * 16 - 8)) + 'px';
+
+            document.body.appendChild(trail);
+
+            // Cycle through trail elements
+            trailIndex = (trailIndex + 1) % trailElements.length;
+
+            // Remove element after animation
+            setTimeout(() => {
+                if (trail.parentNode) {
+                    trail.parentNode.removeChild(trail);
+                }
+            }, 2000);
+        }, 20));
+    </script>
+</body>
+
+</html>
