@@ -117,14 +117,16 @@
         }
 
         function addToAppleCalendar() {
-            const httpsUrl = `${window.location.host}/halloween-elopement-party.ics`
-            const webcalUrl = `webcal://${window.location.host}/halloween-elopement-party.ics`
+            const path = '/halloween-elopement-party.ics';
+            const httpsUrl = path;  
+            const webcalUrl = `webcal://${window.location.host}${path}`;
+
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             const url = isIOS ? webcalUrl : httpsUrl;
 
-            // open in a new tab/window
             window.open(url, '_blank', 'noopener');
         }
+
 
 
 
