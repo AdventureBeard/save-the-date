@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.paperlessghost.com/" />
-    <meta property="og:title" content="You're invited to &quot;Save the Date: Sarah & Braden's Halloween Elopement Party&quot;" />
-    <meta property="og:description" content="We have decided to elope! Save the date! We are throwing a halloween party to celebrate our upcoming elopement with friends!" />
-    <meta property="og:image" content="https://raw.githubusercontent.com/AdventureBeard/save-the-date/refs/heads/master/site-preview.png" />
-    <meta property="og:image:type" content="image/jpeg"/>
+    <meta property="og:title"
+        content="You're invited to &quot;Save the Date: Sarah & Braden's Halloween Elopement Party&quot;" />
+    <meta property="og:description"
+        content="We have decided to elope! Save the date! We are throwing a halloween party to celebrate our upcoming elopement with friends!" />
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/AdventureBeard/save-the-date/refs/heads/master/site-preview.png" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="447" />
     <meta property="og:image:height" content="320" />
     <title>Save the Date: Braden and Sarah's Halloween Elopement Party</title>
@@ -101,7 +104,7 @@
     <script>
         function addToGoogleCalendar() {
             const eventDetails = {
-                title: 'Braden and Sarah\'s Halloween Elopement Party',
+                title: 'Sarah and Braden\'s Halloween Elopement Party',
                 date: '20251018',
                 location: 'DFW, TX',
                 description: 'We have decided to elope! We are throwing a halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d\'oeuvres!'
@@ -113,35 +116,49 @@
 
         function addToAppleCalendar() {
             const eventDetails = {
-                title: 'Braden and Sarah\'s Halloween Elopement Party',
+                title: `Sarah and Bradens's Halloween Elopement Party`,
                 date: '20251018',
                 location: 'DFW, TX',
-                description: 'We have decided to elope! We are throwing a halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d\'oeuvres!'
+                description: `We have decided to elope! We are throwing a halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d'oeuvres!`
             };
 
-            const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Braden & Sarah//Halloween Elopement Party//EN
-BEGIN:VEVENT
-DTSTART;VALUE=DATE:${eventDetails.date}
-SUMMARY:${eventDetails.title}
-LOCATION:${eventDetails.location}
-DESCRIPTION:${eventDetails.description}
-STATUS:CONFIRMED
-SEQUENCE:0
-END:VEVENT
-END:VCALENDAR`;
+            const ics = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Braden & Sarah//Halloween Elopement Party//EN',
+                'BEGIN:VEVENT',
+                `DTSTART;VALUE=DATE:${eventDetails.date}`,
+                `SUMMARY:${eventDetails.title}`,
+                `LOCATION:${eventDetails.location}`,
+                `DESCRIPTION:${eventDetails.description}`,
+                'STATUS:CONFIRMED',
+                'SEQUENCE:0',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
 
-            const blob = new Blob([icsContent], { type: 'text/calendar' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'halloween-elopement-party.ics';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
+            // iOS workaround: turn blob into data: URI so Safari will open it
+            const blob = new Blob([ics], { type: 'text/calendar' });
+            if (/(iPad|iPhone|iPod)/i.test(navigator.userAgent)) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    // this URL will be handed off to Calendar.app
+                    window.location.href = e.target.result;
+                };
+                reader.readAsDataURL(blob);
+            } else {
+                // desktop: use download attribute as before
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'halloween-elopement-party.ics';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
         }
+
 
         // Spooky mouse trail effect
         const trailElements = ['👻', '🎃', '💀', '✨', '🕷️', '⚡', '🪦', '🐈‍⬛', '💜', '🐸'];
