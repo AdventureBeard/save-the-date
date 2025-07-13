@@ -112,7 +112,7 @@
                 description: 'We have decided to elope! We are throwing a halloween party to celebrate our upcoming elopement with friends! Look forward to costumes, games, and heavy hors d\'oeuvres!'
             };
 
-            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${eventDetails.date}/${eventDetails.date}&location=${encodeURIComponent(eventDetails.location)}&details=${encodeURIComponent(eventDetails.description)}`;
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${eventDetails.date}/20251019&location=${encodeURIComponent(eventDetails.location)}&details=${encodeURIComponent(eventDetails.description)}`;
             window.open(googleUrl);
         }
 
