@@ -8,9 +8,12 @@ body {
     margin: 0;
     padding: 20px;
     font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
-    font-size: 11px;
-    background: linear-gradient(45deg, #1a0a1a 0%, #0a0a0a 50%, #2a1a2a 100%);
-    background-attachment: fixed;
+    font-size: 14px;
+    /* background: linear-gradient(45deg, #1a0a1a 0%, #0a0a0a 50%, #2a1a2a 100%); */
+    /* background-attachment: fixed; */
+    background-image: url("nightmare_before_christmas_4kultrahd_bluray_review_2.webp");
+    background-repeat: repeat;
+    background-size: 20%;
     color: #cccccc;
     overflow-x: hidden;
     cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAABLUExURQAAAAAAADMAAP///5lmMygoKGaZZpnMmcjIyLS0tEZGRnh4eJmZmWRkZIKCglBQUDMzMzNmAABmAABmMzOZAACZM2aZABQUFNzc3NQ8NlEAAAABdFJOUwBA5thmAAAAAWJLR0QDEQxM8gAAAAlwSFlzAAAAyAAAAMgAY/rnrQAAAAd0SU1FB+kHDAQPEnZBRhkAAAABb3JOVAHPoneaAAABaElEQVQ4y32SjZKDMAiE5dqAgYskqV7v/Z/0IP7Fdq7rqDPulw1CBnAN/+kLBrjdPvh3Bz77Q58fwC5/dP6w++YEJKKRKMbAEDZ/kwRG+sYYDYj2JuQXnwgxmVAQ7RY0X04AcBJUZVN7pGR+PBMgIirnXEqtlWotni/TSRhgfnnMtGApC5L5SaQHRHOZ51ofj4Xman7h1CfwxGVGWsg3oJ87WFCauC+CCy0z1dnuilRM0hcJEKOWgnYZY1UUjbHrMTADG7Kgra622mz7Eo4us6qCFRJ32fYQ8lEDaFJvA3R6PkPYAQsQkeRIDq7nqpAVNiBN0ySptXpl3oG4EgfyBoyjE+lCXIHfMe4ZrZQLoEni720jzogDcGKK4zvQ90G8Sa+AntN04lql1cBgR+KYhfqBvAYEUN0IdaKJj58IANk+yj7u7AifPjhghKx+GBribsvfJsbbFnDE7MNqq+EssjtZq1o9Am7/AdNeHWoDWh2pAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDI1LTA3LTEyVDA0OjE1OjE4KzAwOjAwFXbEsgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyNS0wNy0xMlQwNDoxNToxOCswMDowMGQrfA4AAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjUtMDctMTJUMDQ6MTU6MTgrMDA6MDAzPl3RAAAAAElFTkSuQmCC'), pointer;
@@ -28,11 +31,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    /* background-image: 
         radial-gradient(circle at 20% 80%, rgba(153, 51, 255, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 50% 50%, rgba(50, 205, 50, 0.08) 0%, transparent 70%),
-        repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+        repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px); */
     pointer-events: none;
     z-index: -1;
 }
@@ -58,7 +61,7 @@ body::before {
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 14px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
@@ -76,7 +79,7 @@ body::before {
     color: #000000;
     width: 16px;
     height: 14px;
-    font-size: 8px;
+    font-size:11px;
     margin-left: 1px;
     display: flex;
     align-items: center;
@@ -107,7 +110,7 @@ body::before {
 
 .skull-border h1 {
     margin: 0 0 10px 0;
-    font-size: 24px;
+    font-size: 27px;
     color: #ff8c00;
     text-shadow: 2px 2px 4px #000, 0 0 8px #ff8c00;
     font-weight: bold;
@@ -116,7 +119,7 @@ body::before {
 
 .skull-border h2 {
     margin: 0;
-    font-size: 16px;
+    font-size: 19px;
     color: #32cd32;
     font-weight: normal;
     text-shadow: 1px 1px 2px #000;
@@ -138,7 +141,7 @@ body::before {
     color: #ff8c00;
     padding: 4px 8px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 15px;
     border-bottom: 1px solid #4b0082;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
@@ -166,7 +169,7 @@ body::before {
 
 .label {
     font-weight: bold;
-    min-width: 100px;
+    min-width: 110px;
     color: #ff8c00;
 }
 
@@ -193,7 +196,7 @@ body::before {
     background: #c3c3c3;
     border: 1px inset #c3c3c3;
     padding: 2px 4px;
-    font-size: 10px;
+    font-size: 13px;
     display: flex;
     align-items: center;
     color: #000000;
@@ -205,7 +208,7 @@ body::before {
 
 .floating-skull, .floating-ghost, .floating-pumpkin {
     position: absolute;
-    font-size: 24px;
+    font-size: 27px;
     animation: float 6s ease-in-out infinite;
     pointer-events: none;
     z-index: 10;
@@ -250,11 +253,11 @@ body::before {
     }
     
     .skull-border h1 {
-        font-size: 18px;
+        font-size: 21px;
     }
     
     .skull-border h2 {
-        font-size: 14px;
+        font-size: 17px;
     }
     
     .floating-skull, .floating-ghost, .floating-pumpkin {
@@ -287,7 +290,7 @@ em {
     font-weight: bold;
     color: #9933ff;
     margin-bottom: 8px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .calendar-btn {
@@ -297,7 +300,7 @@ em {
     padding: 6px 12px;
     margin: 4px 6px;
     font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bold;
     min-width: 130px;
     display: inline-block;
