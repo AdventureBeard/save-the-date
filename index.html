@@ -113,13 +113,13 @@
             };
 
             const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${eventDetails.date}/${eventDetails.date}&location=${encodeURIComponent(eventDetails.location)}&details=${encodeURIComponent(eventDetails.description)}`;
-            window.open(googleUrl, '_blank');
+            window.open(googleUrl);
         }
 
         function addToAppleCalendar() {
             const path = '/halloween-elopement-party.ics';
             
-            window.open(path, '_blank', 'noopener');
+            window.open(path);
         }
 
 
