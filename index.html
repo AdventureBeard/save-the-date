@@ -119,7 +119,7 @@
         function addToAppleCalendar() {
             const path = '/halloween-elopement-party.ics';
             const httpsUrl = path;  
-            const webcalUrl = `${window.location.host}${path}`;
+            const webcalUrl = `${path}`;
 
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             const url = isIOS ? webcalUrl : httpsUrl;
